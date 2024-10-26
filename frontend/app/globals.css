@@ -1,0 +1,68 @@
+/* globals.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+:root {
+  --primaryText: #f0f0f0; /* Light text color for dark backgrounds */
+  --secondaryText: #a8a8a8; /* Lighter gray for descriptions */
+  --backgroundDark: #0d1117; /* Dark background similar to GitHub */
+  --cardBackground: #161b22; /* Slightly lighter for card backgrounds */
+  --buttonPrimary: #FFFFFF; /* Green color for action buttons */
+  --buttonHover: #E5E5E5; /* Darker green for hover */
+  --borderGray: #2a2a2a; /* Gray color for border */
+}
+
+body {
+  background: var(--backgroundDark); /* Corrected variable name */
+  color: var(--primaryText); /* Corrected variable name */
+  font-family: 'Inter', sans-serif;
+}
+
+.text-muted {
+  color: var(--secondaryText); /* Corrected variable name */
+}
+
+.btn-muted {
+  background: var(--cardBackground); /* Updated to use card background for muted buttons */
+  color: var(--primaryText);
+  border: 1px solid var(--borderGray);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-muted:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1);
+}
+
+/* globals.css */
+
+/* Scrollbar styles for the custom-scrollbar class */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* Styling for Firefox */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+}
+
