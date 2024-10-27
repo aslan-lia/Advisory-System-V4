@@ -2,11 +2,13 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import { Customer } from './customers/schemas/customer.schema'; // Adjust paths if needed
+import { Customer } from './customers/schemas/customers.schema';
+import { Site } from './sites/schemas/sites.schema';
+import { Product } from './products/schemas/products.schema';
 
 @Module({
   imports: [
-    ConfigModule.forRoot(),
+    ConfigModule.forRoot(),  // Load .env variables
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
       inject: [ConfigService],
@@ -17,10 +19,11 @@ import { Customer } from './customers/schemas/customer.schema'; // Adjust paths 
         username: configService.get<string>('DB_USERNAME'),
         password: configService.get<string>('DB_PASSWORD'),
         database: configService.get<string>('DB_DATABASE'),
-        entities: [Customer], // Add other entities like Site and Product here
-        synchronize: true, // Use only in development, not in production
+        entities: [Customer, Site, Product],  // Add all relevant entities
+        synchronize: true,  // For development only
       }),
     }),
   ],
+  exports: [TypeOrmModule],  // Export TypeOrmModule for use in other modules
 })
 export class DatabaseModule {}

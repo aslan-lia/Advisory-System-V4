@@ -1,8 +1,8 @@
 // src/customers/customers.controller.ts
-import { Controller, Post, Body } from '@nestjs/common';
+import { Controller, Post, Body, Get } from '@nestjs/common';
 import { CustomersService } from './customers.service';
-import { CreateCustomerDto } from './dto/create-customer.dto';
-import { Customer } from './schemas/customer.schema';
+import { CreateCustomerDto } from './dto/create-customers.dto';
+import { Customer } from './schemas/customers.schema';
 
 @Controller('customers')
 export class CustomersController {
@@ -12,4 +12,9 @@ export class CustomersController {
   async createCustomer(@Body() createCustomerDto: CreateCustomerDto): Promise<Customer> {
     return this.customersService.createCustomer(createCustomerDto);
   }
+
+  @Get()
+  async getAllCustomers(): Promise<Customer[]> {
+  return this.customersService.findAll();
+}
 }

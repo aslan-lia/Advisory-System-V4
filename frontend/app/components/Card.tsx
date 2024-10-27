@@ -1,11 +1,20 @@
 // frontend/app/components/Card.tsx
 interface CardProps {
+
   title: string;
+
   description: string;
+
   icon: React.ReactNode;
+
   onClick: () => void;
+
   buttonLabel: string;
+
+  style?: React.CSSProperties; // Added style property
+
 }
+
 
 export default function Card({ title, description, icon, onClick, buttonLabel }: CardProps) {
   return (
